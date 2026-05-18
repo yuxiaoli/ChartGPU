@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ARKK Holdings · ChartGPU</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg-0: #07080d;
+        --bg-1: #0d1018;
+        --bg-2: #141826;
+        --fg-0: #e7ecf5;
+        --fg-1: #9aa3b8;
+        --accent: #6ee7ff;
+        --accent-2: #ff4ab0;
+        --accent-3: #ffd166;
+        --grid: rgba(255, 255, 255, 0.06);
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; margin: 0; }
+      body {
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        background:
+          radial-gradient(1200px 600px at 10% -10%, rgba(110, 231, 255, 0.18), transparent 60%),
+          radial-gradient(900px 500px at 110% 10%, rgba(255, 74, 176, 0.18), transparent 60%),
+          radial-gradient(800px 800px at 50% 120%, rgba(255, 209, 102, 0.10), transparent 60%),
+          var(--bg-0);
+        color: var(--fg-0);
+        overflow: hidden;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 28px 10px;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+        background: linear-gradient(120deg, var(--accent), var(--accent-2) 60%, var(--accent-3));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      header .meta {
+        display: flex;
+        gap: 14px;
+        font-size: 12px;
+        color: var(--fg-1);
+      }
+      header .meta b { color: var(--fg-0); font-weight: 600; }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 4px 28px 14px;
+        align-items: center;
+      }
+      .chip {
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--fg-1);
+        transition: all 0.18s ease;
+        user-select: none;
+      }
+      .chip:hover { color: var(--fg-0); border-color: rgba(255, 255, 255, 0.18); }
+      .chip.active {
+        color: var(--bg-0);
+        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        border-color: transparent;
+        box-shadow: 0 6px 20px -8px rgba(110, 231, 255, 0.6);
+      }
+      .toolbar .sep { flex: 1; }
+      .toolbar input[type="search"] {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 999px;
+        color: var(--fg-0);
+        padding: 6px 12px;
+        font-size: 12px;
+        outline: none;
+        min-width: 220px;
+      }
+      .toolbar input[type="search"]:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(110, 231, 255, 0.12);
+      }
+      main {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 16px;
+        padding: 0 28px 22px;
+        height: calc(100vh - 110px);
+      }
+      .panel {
+        background: linear-gradient(180deg, rgba(20, 24, 38, 0.72), rgba(13, 16, 24, 0.72));
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        backdrop-filter: blur(8px);
+        overflow: hidden;
+        position: relative;
+      }
+      #chart {
+        width: 100%;
+        height: 100%;
+      }
+      .donut-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+        text-align: center;
+      }
+      .donut-center small {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        color: var(--fg-1);
+        text-transform: uppercase;
+      }
+      .donut-center strong {
+        font-size: 28px;
+        font-weight: 700;
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        background: linear-gradient(120deg, var(--accent), var(--accent-2) 60%, var(--accent-3));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-top: 4px;
+      }
+      .donut-center .sub { margin-top: 6px; color: var(--fg-1); font-size: 10px; }
+      .fallback {
+        position: absolute;
+        inset: 0;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: var(--fg-1);
+        text-align: center;
+        padding: 24px;
+      }
+      .side {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .side header {
+        padding: 14px 18px 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .side h2 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--fg-0);
+        letter-spacing: 0.3px;
+      }
+      .side small { color: var(--fg-1); font-size: 11px; }
+      .holdings {
+        flex: 1;
+        overflow: auto;
+        padding: 6px 10px 12px;
+      }
+      .holdings::-webkit-scrollbar { width: 8px; }
+      .holdings::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 4px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      .row:hover { background: rgba(255, 255, 255, 0.04); }
+      .row.active { background: rgba(110, 231, 255, 0.1); }
+      .ticker {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--accent);
+        background: rgba(110, 231, 255, 0.08);
+        border: 1px solid rgba(110, 231, 255, 0.2);
+        padding: 3px 6px;
+        border-radius: 6px;
+        text-align: center;
+      }
+      .company {
+        font-size: 12px;
+        color: var(--fg-0);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .company small { display: block; color: var(--fg-1); font-size: 10px; }
+      .weight {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--fg-0);
+      }
+      footer {
+        padding: 6px 28px 14px;
+        font-size: 11px;
+        color: var(--fg-1);
+        text-align: right;
+      }
+      @media (max-width: 980px) {
+        main { grid-template-columns: 1fr; height: auto; }
+        body { overflow: auto; }
+        .panel.chart-panel { height: 60vh; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>ARKK · ARK Innovation ETF · Holdings</h1>
+      <div class="meta">
+        <span>As of <b id="meta-date">—</b></span>
+        <span>Holdings <b id="meta-count">—</b></span>
+        <span>Top 10 Weight <b id="meta-top">—</b></span>
+      </div>
+    </header>
+    <div class="toolbar">
+      <span class="chip active" data-mode="weight">Weight %</span>
+      <span class="chip" data-mode="market">Market Value</span>
+      <span class="chip" data-mode="shares">Shares</span>
+      <span class="chip" data-sort="desc">↓ Desc</span>
+      <span class="chip" data-sort="asc">↑ Asc</span>
+      <span class="sep"></span>
+      <input id="search" type="search" placeholder="Filter ticker or company…" />
+    </div>
+    <main>
+      <section class="panel chart-panel">
+        <div id="chart"></div>
+        <div id="donut-center" class="donut-center">
+          <small id="donut-label">Total Weight</small>
+          <strong id="donut-value">—</strong>
+          <small id="donut-sub" class="sub">Top 12 + Other</small>
+        </div>
+        <div id="fallback" class="fallback"></div>
+      </section>
+      <aside class="panel side">
+        <header>
+          <h2>Holdings</h2>
+          <small>Click any row to highlight in chart</small>
+        </header>
+        <div id="holdings" class="holdings"></div>
+      </aside>
+    </main>
+    <footer>Data: ark-funds.com · Rendering: ChartGPU (WebGPU)</footer>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
