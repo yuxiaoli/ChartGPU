@@ -32,15 +32,11 @@ import bundled from "../../data/arkk_holdings.json";
 const ARKK_SOURCE =
   "https://proxy.cf-io.workers.dev/?url=https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv&format=json";
 
-export async function loadHoldings(): Promise<Holding[]> {
-  let raw: RawHolding[] = [];
-  try {
-    const res = await fetch(ARKK_SOURCE);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    raw = (await res.json()) as RawHolding[];
-  } catch {
-    raw = bundled as RawHolding[];
-  }
+const CACHE_NAME = "arkk-holdings-v1";
+const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+const CACHED_AT_HEADER = "x-arkk-cached-at";
+
+function normalize(raw: RawHolding[]): Holding[] {
   return raw
     .filter((r) => r && r.ticker)
     .map<Holding>((r) => ({
@@ -54,4 +50,92 @@ export async function loadHoldings(): Promise<Holding[]> {
       weight: stripNumber(r["weight (%)"]),
     }))
     .filter((h) => h.weight > 0 || h.marketValue > 0);
+}
+
+async function fetchAndCache(
+  cache: Cache | null,
+): Promise<RawHolding[] | null> {
+  const res = await fetch(ARKK_SOURCE, { cache: "no-store" });
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const body = await res.clone().text();
+  if (cache) {
+    const headers = new Headers(res.headers);
+    headers.set("content-type", "application/json");
+    headers.set(CACHED_AT_HEADER, String(Date.now()));
+    await cache.put(
+      ARKK_SOURCE,
+      new Response(body, { status: 200, headers }),
+    );
+  }
+  return JSON.parse(body) as RawHolding[];
+}
+
+async function readFromCache(cache: Cache): Promise<{
+  raw: RawHolding[];
+  age: number;
+} | null> {
+  const hit = await cache.match(ARKK_SOURCE);
+  if (!hit) return null;
+  const cachedAt = Number(hit.headers.get(CACHED_AT_HEADER) ?? "0");
+  const age = Date.now() - cachedAt;
+  const raw = (await hit.json()) as RawHolding[];
+  return { raw, age };
+}
+
+export type LoadResult = {
+  holdings: Holding[];
+  source: "network" | "cache" | "stale-cache" | "bundled";
+  fetchedAt?: number;
+};
+
+export async function loadHoldings(): Promise<LoadResult> {
+  const supportsCache = typeof caches !== "undefined";
+  const cache = supportsCache ? await caches.open(CACHE_NAME) : null;
+
+  if (cache) {
+    const cached = await readFromCache(cache);
+    if (cached && cached.age < CACHE_TTL_MS) {
+      return {
+        holdings: normalize(cached.raw),
+        source: "cache",
+        fetchedAt: Date.now() - cached.age,
+      };
+    }
+    try {
+      const raw = await fetchAndCache(cache);
+      if (raw) {
+        return {
+          holdings: normalize(raw),
+          source: "network",
+          fetchedAt: Date.now(),
+        };
+      }
+    } catch {
+      if (cached) {
+        return {
+          holdings: normalize(cached.raw),
+          source: "stale-cache",
+          fetchedAt: Date.now() - cached.age,
+        };
+      }
+    }
+  } else {
+    try {
+      const raw = await fetchAndCache(null);
+      if (raw) {
+        return {
+          holdings: normalize(raw),
+          source: "network",
+          fetchedAt: Date.now(),
+        };
+      }
+    } catch {
+      // fall through to bundled
+    }
+  }
+
+  return {
+    holdings: normalize(bundled as RawHolding[]),
+    source: "bundled",
+  };
 }

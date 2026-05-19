@@ -1,0 +1,1 @@
+Use `ChartGPU` and the data from `https://proxy.cf-io.workers.dev/?url=https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv&format=json` to build a cool looking and interactive chart.

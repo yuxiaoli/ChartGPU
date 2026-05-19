@@ -52,6 +52,18 @@
         color: var(--fg-1);
       }
       header .meta b { color: var(--fg-0); font-weight: 600; }
+      .source-badge {
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 10px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 3px 8px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--fg-1);
+      }
       .toolbar {
         display: flex;
         flex-wrap: wrap;
@@ -233,6 +245,7 @@
         <span>As of <b id="meta-date">—</b></span>
         <span>Holdings <b id="meta-count">—</b></span>
         <span>Top 10 Weight <b id="meta-top">—</b></span>
+        <span id="source-badge" class="source-badge">…</span>
       </div>
     </header>
     <div class="toolbar">

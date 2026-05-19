@@ -284,14 +284,51 @@ function showFallback(msg: string) {
   fb.textContent = msg;
 }
 
+function renderSourceBadge(
+  source: "network" | "cache" | "stale-cache" | "bundled",
+  fetchedAt?: number,
+) {
+  const el = document.getElementById("source-badge");
+  if (!el) return;
+  const labels: Record<typeof source, string> = {
+    network: "Live",
+    cache: "Cached",
+    "stale-cache": "Cached (offline)",
+    bundled: "Bundled snapshot",
+  } as const;
+  const colors: Record<typeof source, string> = {
+    network: "#7af5b3",
+    cache: "#6ee7ff",
+    "stale-cache": "#ffd166",
+    bundled: "#ff8a5c",
+  } as const;
+  const ageMin = fetchedAt
+    ? Math.max(0, Math.round((Date.now() - fetchedAt) / 60000))
+    : null;
+  const ageStr =
+    ageMin === null
+      ? ""
+      : ageMin < 1
+        ? " · just now"
+        : ageMin < 60
+          ? ` · ${ageMin}m ago`
+          : ` · ${Math.round(ageMin / 60)}h ago`;
+  el.textContent = `${labels[source]}${ageStr}`;
+  el.style.color = colors[source];
+  el.style.borderColor = colors[source] + "55";
+}
+
 async function main() {
   bindToolbar();
+  let result: Awaited<ReturnType<typeof loadHoldings>>;
   try {
-    state.raw = await loadHoldings();
+    result = await loadHoldings();
+    state.raw = result.holdings;
   } catch (e) {
     showFallback(`Failed to load holdings: ${(e as Error).message}`);
     return;
   }
+  renderSourceBadge(result.source, result.fetchedAt);
   renderMeta();
   applyView();
   renderHoldings();
