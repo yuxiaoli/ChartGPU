@@ -33,7 +33,7 @@ const ARKK_SOURCE =
   "https://proxy.cf-io.workers.dev/?url=https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv&format=json";
 
 const CACHE_NAME = "arkk-holdings-v1";
-const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+const CACHE_TTL_MS = 60 * 60 * 1000;
 const CACHED_AT_HEADER = "x-arkk-cached-at";
 
 function normalize(raw: RawHolding[]): Holding[] {
