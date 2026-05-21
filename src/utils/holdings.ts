@@ -92,6 +92,20 @@ export async function loadHoldings(): Promise<LoadResult> {
   const supportsCache = typeof caches !== "undefined";
   const cache = supportsCache ? await caches.open(CACHE_NAME) : null;
 
+  // Clean up old caches
+  if (supportsCache) {
+    try {
+      const keys = await caches.keys();
+      for (const key of keys) {
+        if (key.startsWith("arkk-holdings-") && key !== CACHE_NAME) {
+          await caches.delete(key);
+        }
+      }
+    } catch (e) {
+      console.warn("Failed to clean up old caches", e);
+    }
+  }
+
   if (cache) {
     const cached = await readFromCache(cache);
     if (cached && cached.age < CACHE_TTL_MS) {
