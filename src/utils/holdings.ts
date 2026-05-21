@@ -84,7 +84,7 @@ async function readFromCache(cache: Cache): Promise<{
 
 export type LoadResult = {
   holdings: Holding[];
-  source: "network" | "cache" | "stale-cache" | "bundled";
+  source: "network" | "cache" | "stale-cache";
   fetchedAt?: number;
 };
 
@@ -124,7 +124,7 @@ export async function loadHoldings(): Promise<LoadResult> {
           fetchedAt: Date.now(),
         };
       }
-    } catch {
+    } catch (err) {
       if (cached) {
         return {
           holdings: normalize(cached.raw),
@@ -132,24 +132,18 @@ export async function loadHoldings(): Promise<LoadResult> {
           fetchedAt: Date.now() - cached.age,
         };
       }
+      throw err;
     }
   } else {
-    try {
-      const raw = await fetchAndCache(null);
-      if (raw) {
-        return {
-          holdings: normalize(raw),
-          source: "network",
-          fetchedAt: Date.now(),
-        };
-      }
-    } catch {
-      // fall through to bundled
+    const raw = await fetchAndCache(null);
+    if (raw) {
+      return {
+        holdings: normalize(raw),
+        source: "network",
+        fetchedAt: Date.now(),
+      };
     }
   }
 
-  return {
-    holdings: normalize(bundled as RawHolding[]),
-    source: "bundled",
-  };
+  throw new Error("Failed to load holdings: No data available.");
 }

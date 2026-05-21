@@ -285,7 +285,7 @@ function showFallback(msg: string) {
 }
 
 function renderSourceBadge(
-  source: "network" | "cache" | "stale-cache" | "bundled",
+  source: "network" | "cache" | "stale-cache",
   fetchedAt?: number,
 ) {
   const el = document.getElementById("source-badge");
@@ -294,13 +294,11 @@ function renderSourceBadge(
     network: "Live",
     cache: "Cached",
     "stale-cache": "Cached (offline)",
-    bundled: "Bundled snapshot",
   } as const;
   const colors: Record<typeof source, string> = {
     network: "#7af5b3",
     cache: "#6ee7ff",
     "stale-cache": "#ffd166",
-    bundled: "#ff8a5c",
   } as const;
   const ageMin = fetchedAt
     ? Math.max(0, Math.round((Date.now() - fetchedAt) / 60000))
