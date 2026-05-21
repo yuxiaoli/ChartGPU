@@ -1,0 +1,472 @@
+[
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "TESLA INC",
+    "ticker": "TSLA",
+    "cusip": "88160R101",
+    "shares": "1,512,763",
+    "market value ($)": "$611,322,655.93",
+    "weight (%)": "10.57%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ADVANCED MICRO DEVICES",
+    "ticker": "AMD",
+    "cusip": "007903107",
+    "shares": "709,911",
+    "market value ($)": "$293,938,649.55",
+    "weight (%)": "5.08%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "CIRCLE INTERNET GROUP INC",
+    "ticker": "CRCL",
+    "cusip": "172573107",
+    "shares": "2,534,339",
+    "market value ($)": "$281,387,659.17",
+    "weight (%)": "4.86%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "TEMPUS AI INC-CL A",
+    "ticker": "TEM",
+    "cusip": "88023B103",
+    "shares": "6,086,908",
+    "market value ($)": "$277,136,921.24",
+    "weight (%)": "4.79%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "CRISPR THERAPEUTICS AG",
+    "ticker": "CRSP",
+    "cusip": "H17182108",
+    "shares": "5,642,324",
+    "market value ($)": "$268,518,199.16",
+    "weight (%)": "4.64%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ROBINHOOD MARKETS INC - A",
+    "ticker": "HOOD",
+    "cusip": "770700102",
+    "shares": "3,499,671",
+    "market value ($)": "$259,535,601.36",
+    "weight (%)": "4.49%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ROKU INC",
+    "ticker": "ROKU",
+    "cusip": "77543R102",
+    "shares": "2,147,733",
+    "market value ($)": "$258,973,645.14",
+    "weight (%)": "4.48%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "COINBASE GLOBAL INC -CLASS A",
+    "ticker": "COIN",
+    "cusip": "19260Q107",
+    "shares": "1,336,440",
+    "market value ($)": "$258,534,318.00",
+    "weight (%)": "4.47%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "SHOPIFY INC - CLASS A",
+    "ticker": "SHOP",
+    "cusip": "82509L107",
+    "shares": "2,361,549",
+    "market value ($)": "$238,540,064.49",
+    "weight (%)": "4.12%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "PALANTIR TECHNOLOGIES INC-A",
+    "ticker": "PLTR",
+    "cusip": "69608A108",
+    "shares": "1,335,493",
+    "market value ($)": "$180,638,783.18",
+    "weight (%)": "3.12%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "OPENAI GROUP PBC SERIES C",
+    "ticker": "",
+    "cusip": "PPOPENAIC",
+    "shares": "254,476",
+    "market value ($)": "$174,999,811.56",
+    "weight (%)": "3.03%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BEAM THERAPEUTICS INC",
+    "ticker": "BEAM",
+    "cusip": "07373V105",
+    "shares": "5,980,730",
+    "market value ($)": "$157,472,620.90",
+    "weight (%)": "2.72%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ROBLOX CORP -CLASS A",
+    "ticker": "RBLX",
+    "cusip": "771049103",
+    "shares": "3,502,400",
+    "market value ($)": "$155,681,680.00",
+    "weight (%)": "2.69%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "AMAZON.COM INC",
+    "ticker": "AMZN",
+    "cusip": "023135106",
+    "shares": "598,794",
+    "market value ($)": "$155,291,235.96",
+    "weight (%)": "2.68%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "INTELLIA THERAPEUTICS INC",
+    "ticker": "NTLA",
+    "cusip": "45826J105",
+    "shares": "12,166,912",
+    "market value ($)": "$145,272,929.28",
+    "weight (%)": "2.51%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "COREWEAVE INC-CL A",
+    "ticker": "CRWV",
+    "cusip": "21873S108",
+    "shares": "1,445,489",
+    "market value ($)": "$144,274,257.09",
+    "weight (%)": "2.49%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "10X GENOMICS INC-CLASS A",
+    "ticker": "TXG",
+    "cusip": "88025U109",
+    "shares": "6,207,991",
+    "market value ($)": "$138,376,119.39",
+    "weight (%)": "2.39%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "TWIST BIOSCIENCE CORP",
+    "ticker": "TWST",
+    "cusip": "90184D100",
+    "shares": "2,776,426",
+    "market value ($)": "$137,433,087.00",
+    "weight (%)": "2.38%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BULLISH",
+    "ticker": "BLSH",
+    "cusip": "G16910120",
+    "shares": "3,737,512",
+    "market value ($)": "$135,410,059.76",
+    "weight (%)": "2.34%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BITMINE IMMERSION TECHNOLOGI",
+    "ticker": "BMNR",
+    "cusip": "09175A206",
+    "shares": "5,618,496",
+    "market value ($)": "$104,672,580.48",
+    "weight (%)": "1.81%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ARCHER AVIATION INC-A",
+    "ticker": "ACHR",
+    "cusip": "03945R102",
+    "shares": "16,048,391",
+    "market value ($)": "$94,845,990.81",
+    "weight (%)": "1.64%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BLOCK INC",
+    "ticker": "XYZ",
+    "cusip": "852234103",
+    "shares": "1,290,859",
+    "market value ($)": "$89,288,717.03",
+    "weight (%)": "1.54%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ALPHABET INC-CL C",
+    "ticker": "GOOG",
+    "cusip": "02079K107",
+    "shares": "229,372",
+    "market value ($)": "$88,285,282.80",
+    "weight (%)": "1.53%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ILLUMINA INC",
+    "ticker": "ILMN",
+    "cusip": "452327109",
+    "shares": "562,016",
+    "market value ($)": "$79,626,426.88",
+    "weight (%)": "1.38%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "NVIDIA CORP",
+    "ticker": "NVDA",
+    "cusip": "67066G104",
+    "shares": "352,952",
+    "market value ($)": "$77,864,740.72",
+    "weight (%)": "1.35%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "TERADYNE INC",
+    "ticker": "TER",
+    "cusip": "880770102",
+    "shares": "227,320",
+    "market value ($)": "$73,087,926.40",
+    "weight (%)": "1.26%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "NATERA INC",
+    "ticker": "NTRA",
+    "cusip": "632307104",
+    "shares": "368,606",
+    "market value ($)": "$72,261,520.24",
+    "weight (%)": "1.25%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BROADCOM INC",
+    "ticker": "AVGO",
+    "cusip": "11135F101",
+    "shares": "165,581",
+    "market value ($)": "$68,065,381.67",
+    "weight (%)": "1.18%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "DEERE & CO",
+    "ticker": "DE",
+    "cusip": "244199105",
+    "shares": "122,472",
+    "market value ($)": "$68,347,949.04",
+    "weight (%)": "1.18%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "VERACYTE INC",
+    "ticker": "VCYT",
+    "cusip": "92337F107",
+    "shares": "1,610,054",
+    "market value ($)": "$67,123,151.26",
+    "weight (%)": "1.16%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BAIDU INC - SPON ADR",
+    "ticker": "BIDU",
+    "cusip": "056752108",
+    "shares": "485,152",
+    "market value ($)": "$66,795,727.36",
+    "weight (%)": "1.15%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "X-ENERGY INC",
+    "ticker": "XE",
+    "cusip": "98386P102",
+    "shares": "2,394,366",
+    "market value ($)": "$64,097,177.82",
+    "weight (%)": "1.11%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "RECURSION PHARMACEUTICALS-A",
+    "ticker": "RXRX",
+    "cusip": "75629V104",
+    "shares": "19,880,504",
+    "market value ($)": "$56,659,436.40",
+    "weight (%)": "0.98%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "ALIBABA GROUP HOLDING-SP ADR",
+    "ticker": "BABA",
+    "cusip": "01609W102",
+    "shares": "413,143",
+    "market value ($)": "$56,038,716.52",
+    "weight (%)": "0.97%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "TAIWAN SEMICONDUCTOR-SP ADR",
+    "ticker": "TSM",
+    "cusip": "874039100",
+    "shares": "139,814",
+    "market value ($)": "$54,892,374.54",
+    "weight (%)": "0.95%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BWX TECHNOLOGIES INC",
+    "ticker": "BWXT",
+    "cusip": "05605H100",
+    "shares": "274,958",
+    "market value ($)": "$54,257,462.14",
+    "weight (%)": "0.94%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "KRATOS DEFENSE & SECURITY",
+    "ticker": "KTOS",
+    "cusip": "50077B207",
+    "shares": "988,740",
+    "market value ($)": "$52,862,984.10",
+    "weight (%)": "0.91%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "GENEDX HOLDINGS CORP",
+    "ticker": "WGS",
+    "cusip": "81663L200",
+    "shares": "940,813",
+    "market value ($)": "$39,636,451.69",
+    "weight (%)": "0.69%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "FIGMA INC-CL A",
+    "ticker": "",
+    "cusip": "316841105",
+    "shares": "1,604,564",
+    "market value ($)": "$37,338,204.28",
+    "weight (%)": "0.65%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "CEREBRAS SYSTEMS INC - A",
+    "ticker": "CBRS",
+    "cusip": "15675D103",
+    "shares": "122,291",
+    "market value ($)": "$37,131,216.33",
+    "weight (%)": "0.64%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "META PLATFORMS INC-CLASS A",
+    "ticker": "META",
+    "cusip": "30303M102",
+    "shares": "58,333",
+    "market value ($)": "$35,152,049.13",
+    "weight (%)": "0.61%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "SOFI TECHNOLOGIES INC",
+    "ticker": "SOFI",
+    "cusip": "83406F102",
+    "shares": "1,990,911",
+    "market value ($)": "$30,321,574.53",
+    "weight (%)": "0.52%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "CERUS CORP",
+    "ticker": "CERS",
+    "cusip": "157085101",
+    "shares": "8,820,463",
+    "market value ($)": "$23,815,250.10",
+    "weight (%)": "0.41%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "PACIFIC BIOSCIENCES OF CALIF",
+    "ticker": "PACB",
+    "cusip": "69404D108",
+    "shares": "13,476,871",
+    "market value ($)": "$15,498,401.65",
+    "weight (%)": "0.27%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "GOLDMAN FS TRSY OBLIG INST 468",
+    "ticker": "",
+    "cusip": "X9USDGSFT",
+    "shares": "1,930,867",
+    "market value ($)": "$1,930,867.26",
+    "weight (%)": "0.03%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BRERA HOLDINGS PLC WTS",
+    "ticker": "",
+    "cusip": "BREADUMMY",
+    "shares": "431,626",
+    "market value ($)": "$1,053,166.71",
+    "weight (%)": "0.02%"
+  },
+  {
+    "date": "05/20/2026",
+    "fund": "ARKK",
+    "company": "BRERA HOLDINGS PLC-CL B",
+    "ticker": "",
+    "cusip": "G13311132",
+    "shares": "308,672",
+    "market value ($)": "$1,389,024.00",
+    "weight (%)": "0.02%"
+  }
+]
