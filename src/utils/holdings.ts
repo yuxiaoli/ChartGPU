@@ -27,12 +27,12 @@ const stripNumber = (v: string | number | undefined): number => {
   return Number.isFinite(n) ? n : 0;
 };
 
-import bundled from "../../data/arkk_holdings.json";
+// import bundled from "../../data/arkk_holdings.json";
 
 const ARKK_SOURCE =
   "https://proxy.cf-io.workers.dev/?url=https://assets.ark-funds.com/fund-documents/funds-etf-csv/ARK_INNOVATION_ETF_ARKK_HOLDINGS.csv&format=json";
 
-const CACHE_NAME = "arkk-holdings-v1";
+const CACHE_NAME = "arkk-holdings-v2";
 const CACHE_TTL_MS = 60 * 60 * 1000;
 const CACHED_AT_HEADER = "x-arkk-cached-at";
 
